@@ -8,7 +8,7 @@
 
 输入非数字时,显示原默认值
 
-小于0时,为1
+小于0时,为0
 
 
-http://wangnana.vicp.cc/calculator/calculator.html
+https://www.hijs.cc/calculator/index.html
