@@ -1,10 +1,85 @@
-	html
-		
-		<div class="box">
-			<div>计算器</div>
-			<div class="w-number">
-				<input class="search-num" value="1" pattern="[0-9]*">
-				<a class="w-number-btn search-plus" href="javascript:void(0);">+</a>
-				<a class="w-number-btn search-less" href="javascript:void(0);">-</a>
-			</div>
-		</div>
+<div id="box" v-cloak>
+    <div class="head">{{head}}</div>
+    <div class="w-number">
+        <input class="search-num" v-model="num" type="number"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')">
+        <a @click="plus" class="w-number-btn search-plus" href="javascript:void(0);">+</a>
+        <a @click="less" class="w-number-btn search-less" href="javascript:void(0);">-</a>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#box',
+        data: {
+            head:'计算器',
+            num:'0'
+        },
+        created:function(){
+        },
+        methods: {
+            plus:function () {
+                if (this.num >= 0){
+                    this.num++;
+                }
+            },
+            less:function () {
+                if (this.num >= 1){
+                    this.num--;
+                }
+            }
+        }
+    });
+</script>
+
+<style>
+        .head{
+            height: 0.4rem;
+            line-height: 0.4rem;
+            font-size: 0.3rem;
+            text-align: center;
+            margin: 0.3rem 0;
+        }
+        .w-number {
+            padding: 0 24px;
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            line-height: normal;
+        }
+        .w-number a {
+            color: #222;
+        }
+        .search-num {
+            font-size: 14px;
+            text-align: center;
+            width: 45px;
+            border: 1px solid #e0e0e0;
+            height: 22px;
+            padding: 2px 4px;
+            outline: none;
+            float: left;
+        }
+        .w-number-btn {
+            font-size: 18px;
+            width: 26px;
+            height: 26px;
+            line-height: 24px;
+            text-decoration: none;
+            position: absolute;
+            right: 0;
+            text-align: center;
+            overflow: hidden;
+            background: #F5F5F5;
+            color: #9e9e9e;
+            border: 1px solid #e0e0e0;
+        }
+        .search-plus {
+            right: 0;
+            top: 0;
+        }
+        .search-less {
+            left: 0;
+            top: 0;
+        }
+    </style>
